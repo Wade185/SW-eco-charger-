@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Predictions</title>
+    <style>
+        body { font-family: Arial, sans-serif; background-color: #F4F4F4; text-align: center; }
+        header { background-color: #2E7D32; color: white; padding: 20px; }
+        nav { background-color: #FFD700; padding: 10px; }
+        nav a { color: #2E7D32; text-decoration: none; margin: 10px; font-size: 18px; font-weight: bold; }
+        section { padding: 20px; }
+        .prediction-box { background: white; padding: 15px; margin: 15px; border-radius: 10px; box-shadow: 0px 0px 10px #bbb; }
+        footer { background-color: #2E7D32; color: white; padding: 10px; position: fixed; width: 100%; bottom: 0; }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>AI Predictions</h1>
+</header>
+
+<nav>
+    <a href="index.html">Home</a>
+    <a href="ai-alerts.html">AI Alerts</a>
+    <a href="control.html">Control</a>
+    <a href="weather.html">Weather</a>
+    <a href="dashboard.html">Dashboard</a>
+    <a href="voice.html">Voice Commands</a>
+</nav>
+
+<section>
+    <h2>Smart AI Recommendations</h2>
+    <div class="prediction-box"><strong>Recommended Energy Source:</strong> <span id="recommendation">Loading...</span></div>
+</section>
+
+<script>
+    function fetchPrediction() {
+        fetch("http://your-esp8266-ip/prediction")
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById("recommendation").innerText = data.recommendation;
+            })
+            .catch(error => console.error("Error fetching AI prediction:", error));
+    }
+    
+    setInterval(fetchPrediction, 10000);
+</script>
+
+<footer>
+    <p>&copy; 2025 Eco Charger Monitor | All Rights Reserved</p>
+</footer>
+
+</body>
+</html>

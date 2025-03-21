@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eco Charger Monitor</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #2c3e50;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        section {
+            padding: 20px;
+            margin: 0 15%;
+        }
+
+        h1, h2 {
+            color: #2c3e50;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            background-color: #ecf0f1;
+            margin: 10px 0;
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        .key-features li {
+            display: flex;
+            align-items: center;
+        }
+
+        .key-features li:before {
+            content: "✅";
+            margin-right: 10px;
+            font-size: 20px;
+        }
+
+        .how-it-works p {
+            font-size: 1.1em;
+        }
+
+        .target-users {
+            background-color: #34495e;
+            color: white;
+            padding: 20px;
+            margin-top: 20px;
+            border-radius: 5px;
+        }
+
+        footer {
+            background-color: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Eco Charger Monitor</h1>
+    <p>AI-Powered Monitoring for Your Solar and Wind Energy System</p>
+</header>
+
+<section>
+    <h2>App Description</h2>
+    <p><strong>Eco Charger Monitor</strong> is an AI-powered app designed to track and display real-time data from your solar panel and wind turbine system. The app connects to an ESP8266 Wi-Fi module to provide live updates on energy generation, battery status, weather conditions, and system performance.</p>
+</section>
+
+<section>
+    <h2>Key Features</h2>
+    <ul class="key-features">
+        <li>Live Data Monitoring – Track wind speed, solar energy, battery voltage, and phone charging status.</li>
+        <li>Smart AI Alerts – Get notified when wind speeds are too low or when the system requires maintenance.</li>
+        <li>Retraction & Deployment Control – Remotely retract or deploy the wind turbine and solar panel based on real-time conditions.</li>
+        <li>Weather Insights – Monitor temperature and humidity to optimize renewable energy usage.</li>
+        <li>User-Friendly Dashboard – Simple and intuitive interface for real-time tracking.</li>
+        <li>AI-Powered Predictions – Smart recommendations on when to deploy wind or solar based on weather forecasts.</li>
+        <li>Voice Command Integration – Control the system using voice commands for hands-free operation.</li>
+    </ul>
+</section>
+
+<section class="how-it-works">
+    <h2>How It Works</h2>
+    <p><strong>1. Connect to Wi-Fi:</strong> The app communicates with ESP8266 to fetch real-time data from your Arduino Mega-based Eco Charger system.</p>
+    <p><strong>2. Monitor Performance:</strong> See wind turbine voltage, power generation, and battery charging status.</p>
+    <p><strong>3. Receive AI Alerts:</strong> Get automatic recommendations when to retract the wind turbine and switch to solar energy.</p>
+    <p><strong>4. Control System Remotely:</strong> Manually deploy or retract the turbine and solar panels using in-app buttons or voice commands.</p>
+</section>
+
+<section class="target-users">
+    <h2>Target Users</h2>
+    <ul>
+        <li>Renewable energy enthusiasts</li>
+        <li>Students & engineers working on smart energy projects</li>
+        <li>Off-grid home users wanting to track energy production</li>
+        <li>Smart home automation users</li>
+    </ul>
+</section>
+
+<footer>
+    <p>&copy; 2025 Eco Charger Monitor | All Rights Reserved</p>
+</footer>
+
+</body>
+</html>

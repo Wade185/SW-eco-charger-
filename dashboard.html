@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body { font-family: Arial, sans-serif; background-color: #F4F4F4; text-align: center; }
+        header { background-color: #2E7D32; color: white; padding: 20px; }
+        nav { background-color: #FFD700; padding: 10px; }
+        nav a { color: #2E7D32; text-decoration: none; margin: 10px; font-size: 18px; font-weight: bold; }
+        section { padding: 20px; }
+        .data-box { background: white; padding: 15px; margin: 15px; border-radius: 10px; box-shadow: 0px 0px 10px #bbb; }
+        canvas { max-width: 600px; margin: auto; }
+        footer { background-color: #2E7D32; color: white; padding: 10px; position: fixed; width: 100%; bottom: 0; }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Dashboard</h1>
+</header>
+
+<nav>
+    <a href="index.html">Home</a>
+    <a href="ai-alerts.html">AI Alerts</a>
+    <a href="control.html">Control</a>
+    <a href="weather.html">Weather</a>
+    <a href="predictions.html">AI Predictions</a>
+    <a href="voice.html">Voice Commands</a>
+</nav>
+
+<section>
+    <h2>Live Energy Data</h2>
+    <div class="data-box"><strong>Wind Power:</strong> <span id="windPower">Loading...</span> W</div>
+    <div class="data-box"><strong>Solar Power:</strong> <span id="solarPower">Loading...</span> W</div>
+    <div class="data-box"><strong>Battery Voltage:</strong> <span id="batteryVoltage">Loading...</span> V</div>
+    <div class="data-box"><strong>Charging Status:</strong> <span id="chargingStatus">Loading...</span></div>
+    
+    <canvas id="powerChart"></canvas>
+</section>
+
+<script>
+    function fetchData() {
+        fetch("http://your-esp8266-ip/data")
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById("windPower").innerText = data.windPower;
+                document.getElementById("solarPower").innerText = data.solarPower;
+                document.getElementById("batteryVoltage").innerText = data.batteryVoltage;
+                document.getElementById("chargingStatus").innerText = data.chargingStatus;
+                
+                updateChart(data.windPower, data.solarPower);
+            })
+            .catch(error => console.error("Error fetching data:", error));
+    }
+
+    const ctx = document.getElementById('powerChart').getContext('2d');
+    const powerChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: ["Wind", "Solar"],
+            datasets: [{
+                label: 'Power Output (W)',
+                data: [0, 0],
+                backgroundColor: ['#2E7D32', '#FFD700'],
+                borderColor: ['#2E7D32', '#FFD700'],
+                borderWidth: 1
+            }]
+        },
+        options: { responsive: true }
+    });
+
+    function updateChart(wind, solar) {
+        powerChart.data.datasets[0].data = [wind, solar];
+        powerChart.update();
+    }
+
+    setInterval(fetchData, 5000);
+</script>
+
+<footer>
+    <p>&copy; 2025 Eco Charger Monitor | All Rights Reserved</p>
+</footer>
+
+</body>
+</html>
